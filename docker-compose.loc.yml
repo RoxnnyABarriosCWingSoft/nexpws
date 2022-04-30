@@ -1,0 +1,108 @@
+version: '3.4'
+
+services:
+  node:
+    container_name: nexpws_node_1
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    working_dir: /home/node/app
+    entrypoint: bash loc.build.sh
+    volumes:
+     - .:/home/node/app:cached
+    ports:
+      - "8089:8089"
+    networks:
+     - nexpwsnet
+
+  db:
+    container_name: nexpws_db_1
+    restart: always
+    build:
+      context: docker/postgres/
+      dockerfile: Dockerfile
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=nexpws
+      - POSTGRES_DB=nexpws
+      - POSTGRES_PASSWORD=nexpws
+    volumes:
+      - data_sql:/var/lib/postgresql/data
+    networks:
+      - nexpwsnet
+
+  db-mongo:
+    container_name: nexpws_db_mongo_1
+    restart: always
+    build:
+      context: docker/mongo/
+      dockerfile: Dockerfile
+    ports:
+      - "27017:27017"
+    networks:
+     - nexpwsnet
+    environment:
+      MONGODB_ROOT_PASSWORD: nexpws
+      MONGODB_USERNAME: nexpws
+      MONGODB_PASSWORD: nexpws
+      MONGODB_DATABASE: nexpws
+    volumes:
+      - data_mongo:/bitnami/mongodb
+
+  mail:
+    container_name: nexpws_mail_1
+    restart: always
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
+    networks:
+     - nexpwsnet
+
+  minio:
+    container_name: nexpws_minio_1
+    restart: always
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+     - nexpwsnet
+    environment:
+      MINIO_ROOT_USER: nexpws
+      MINIO_ROOT_PASSWORD: nexpws
+      MINIO_DOMAIN: minio
+    volumes:
+      - minio:/data
+    command: server --address 0.0.0.0:9000 --console-address 0.0.0.0:9001 /data
+
+  redis:
+    image: bitnami/redis:latest
+    restart: always
+    container_name: nexpws_redis_1
+    environment:
+      - REDIS_PASSWORD=nexpws # Security reasons
+      - DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG # Security reasons
+    ports:
+      - "6379:6379"
+    networks:
+     - nexpwsnet
+    volumes:
+      - redis:/bitnami/redis/data
+
+networks:
+  nexpwsnet:
+    driver: "bridge"
+
+volumes:
+  data_mongo:
+    driver: "local"
+  minio:
+    driver: "local"
+  redis:
+    driver: "local"
+  data_sql:
+      driver: "local"
+

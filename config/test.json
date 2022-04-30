@@ -1,0 +1,162 @@
+{
+  "env": "test",
+  "nodePath": "/home/node/app",
+  "serverPort": 8089,
+  "setCookieSecure": false,
+  "setCookieSameSite": "None",
+  "auth": {
+    "authorization": true
+  },
+  "dbConfig": {
+    "TypeORM": {
+      "type": "postgres",
+      "host": "db",
+      "port": 5432,
+      "database": "nexpws",
+      "username": "nexpws",
+      "password": "nexpws",
+      "synchronize": true,
+      "migrationsRun": false,
+      "logging": true
+    },
+    "Mongoose": {
+      "host": "db",
+      "port": 27017,
+      "database": "nexpws",
+      "username": "nexpws",
+      "password": "nexpws"
+    },
+    "default": "TypeORM"
+  },
+  "cache": {
+    "redis": {
+      "port": 6379,
+      "host": "redis",
+      "password": "nexpws"
+    }
+  },
+  "filesystem": {
+    "minio": {
+      "endPoint": "minio",
+      "accessKey": "nexpws",
+      "secretKey": "nexpws",
+      "useSSL": false,
+      "port": 9000,
+      "publicBucket": "nexpws.public",
+      "privateBucket": "nexpws.private",
+      "rootPath": "",
+      "region": "us-east-1"
+    },
+    "local": {
+      "type": "local"
+    },
+    "default": "minio",
+    "expiry": 241920
+  },
+  "encryption": {
+    "symmetricKey": "BFbzNLYCWO7Ei0cmBco43ZCsEbhFAOzcfop1eHYiK8CVCBK_-xeWEWzHHlQiPEUPvuxwMHc1koGj40t2hcgiWvk",
+    "bcrypt": {
+      "type": "bcrypt",
+      "saltRounds": 10,
+      "algorithm": "HS512"
+    },
+    "default": "bcrypt"
+  },
+  "jwt": {
+    "secret": "nexpws",
+    "expires": 3600,
+    "iss": "nexpws",
+    "aud": "nexpws.com"
+  },
+  "mail": {
+    "host": "mail",
+    "port": 1025,
+    "username": "",
+    "password": "",
+    "secure": false,
+    "senderName": "Notifications",
+    "senderEmailDefault": "notification@localhost.com",
+    "templateDir": "src/App/Infrastructure/templates/emails"
+  },
+  "push": {
+    "privateKey": "BFbzNLYCWO7Ei0cmBco43ZCsEbhFAOzcfop1eHYiK8CVCBK_-xeWEWzHHlQiPEUPvuxwMHc1koGj40t2hcgiWvk",
+    "publicKey": "k8sGjPBnD8iabMkB6toD8payp9plozw4t4FSfjhUPhQ"
+  },
+  "url":{
+    "urlApi": "http://localhost:8089/api/",
+    "urlWeb": "http://localhost:3000/"
+  },
+  "productInfo": {
+    "productName": "nexpws"
+  },
+  "validationSettings": {
+    "password": {
+      "min": 3,
+      "max": 15
+    }
+  },
+  "executeCrons": false,
+  "locale": "en",
+  "apiWhitelist": [
+    {
+      "methods": ["GET"],
+      "url": "/"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/login"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/signup"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/forgotPassword"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/forgot-password"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/change-forgot-password"
+    },
+    {
+      "methods": ["PUT"],
+      "url": "/api/auth/verify-your-account/**"
+    },
+    {
+      "methods": ["PUT"],
+      "url": "/api/auth/verify-your-account/**"
+    },
+    {
+      "methods": ["POST"],
+      "url": "/api/auth/refresh-token"
+    },
+    {
+      "methods": ["*"],
+      "url": "/test/all/*"
+    },
+    {
+      "methods": ["GET"],
+      "url": "/test/countries"
+    },
+    {
+      "methods": ["GET"],
+      "url": "/test/countries/**"
+    },
+    {
+      "methods": ["GET"],
+      "url": "/test/countries/**/states"
+    },
+    {
+      "methods": ["GET"],
+      "url": "/test/countries/**/states/**/cities"
+    },
+    {
+      "methods": ["GET"],
+      "url": "/test/countries/**/states/*"
+    }
+  ]
+}

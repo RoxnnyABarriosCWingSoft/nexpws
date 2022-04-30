@@ -1,0 +1,78 @@
+{
+	"greetings": "Bienvenido a Node Experience",
+	"app": {
+		"domain": {
+			"exceptions": {
+				"invalidPassword": "Contraseña invalida",
+				"uniqueAttribute": "La propiedad {{name}} ya se encuentra en uso",
+				"uniqueAttributes": "La combinacion de propiedades {{name}} ya se encuentra en uso"
+			}
+		},
+		"presentation": {
+			"exceptions": {
+				"duplicateEntity": "Entidad duplicada.",
+				"routeNotFound": "Ruta no encontrada."
+			}
+		}
+	},
+	"auth": {
+		"domain": {
+			"exceptions": {
+				"badCredentials": "Error en las credenciales.",
+				"cantDisabled": "No se puede deshabilitar.",
+				"passwordWrong": "Error en la contraseña.",
+				"wrongPermissions": "Error en los permisos."
+			},
+			"messages": {
+				"logout": "Has cerrado tu sesion correctamente.",
+                "forgotPassword": "Te hemos enviado un email.",
+                "register": "Te has registrado correctamente."
+			}
+		},
+		"presentation": {
+			"exceptions": {
+				"forbidden": "Acceso prohibido.",
+				"tokenBlackListed": "Token no permitido.",
+				"tokenExpired": "Debes estar autenticado.",
+				"tokenNotFound": "Token no encontrado."
+			}
+		}
+	},
+	"role": {
+		"domain": {
+			"exceptions": {
+				"roleDisabled": "Tu rol esta esta deshabilitado.",
+				"roleOfSystemNotDeleted":"Prohibido eliminar roles del sistema.",
+				"roleWithoutAdministrativeAccessException": "Usted no tiene acceso al panel administrativo."
+			}
+		}
+	},
+	"shared": {
+		"exceptions": {
+			"symmetricDecryptError": "Hubo un problema al tratar de desencriptar con su llave simetrica.",
+			"decryptForbidden": "No se puede desencriptar.",
+			"notFound": "No encontrado."
+		}
+	},
+	"user": {
+		"domain": {
+			"exceptions": {
+				"userDisabled": "Tu usuario esta deshabilitado.",
+				"unverifiedUser": "Este usuario no esta verificado."
+			}
+		}
+	},
+	"log": {
+		"domain": {
+			"service": {
+				"loggerService": {
+					"login": "{{rut}} inició sesión",
+					"logout": "{{rut}} cerro su sesión",
+					"save": "{{rut}} creo el {{entity}}",
+					"update": "{{rut}} actualizo el {{entity}}",
+					"remove": "{{rut}} elimino el {{entity}}"
+				}
+			}
+		}
+	}
+}

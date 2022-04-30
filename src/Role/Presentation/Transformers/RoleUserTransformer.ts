@@ -1,0 +1,23 @@
+import moment from 'moment';
+import { Transformer } from '@digichanges/shared-experience';
+
+import IRoleDomain from '../../Domain/Entities/IRoleDomain';
+import IRoleTransformer from './IRoleTransformer';
+
+class RoleUserTransformer extends Transformer
+{
+    public async transform(role: IRoleDomain): Promise<IRoleTransformer>
+    {
+        return {
+            id: role.getId(),
+            name: role.name,
+            slug: role.slug,
+            enable: role.enable,
+            isAdmin: role.isAdmin,
+            createdAt: moment(role.createdAt).utc().unix(),
+            updatedAt: moment(role.updatedAt).utc().unix()
+        };
+    }
+}
+
+export default RoleUserTransformer;

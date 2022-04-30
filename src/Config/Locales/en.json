@@ -1,0 +1,78 @@
+{
+	"greetings": "Welcome to Node Experience",
+	"app": {
+		"domain": {
+			"exceptions": {
+				"invalidPassword": "Invalid Password.",
+				"uniqueAttribute": "The {{name}} property is already in use.",
+				"uniqueAttributes": "The property combination {{name}} is already in use"
+			}
+		},
+		"presentation": {
+			"exceptions": {
+				"duplicateEntity": "Duplicate entity.",
+				"routeNotFound": "Route not found."
+			}
+		}
+	},
+	"auth": {
+		"domain": {
+			"exceptions": {
+				"badCredentials": "Error credentials.",
+				"cantDisabled": "Disabled forbidden.",
+				"passwordWrong": "Wrong password.",
+				"wrongPermissions": "Wrong permissions."
+			},
+			"messages": {
+				"logout": "You have logged out successfully.",
+				"forgotPassword": "We've sent you an email.",
+				"register": "You have sign up successfully."
+			}
+		},
+		"presentation": {
+			"exceptions": {
+				"forbidden": "Forbidden.",
+				"tokenBlackListed": "Token not allowed.",
+				"tokenExpired": "You must be authenticated.",
+				"tokenNotFound": "Token not found."
+			}
+		}
+	},
+	"role": {
+		"domain": {
+			"exceptions": {
+				"roleDisabled": "Your role is disable.",
+				"roleOfSystemNotDeleted": "Forbidden delete role of system.",
+				"roleWithoutAdministrativeAccessException": "You do not have access to the administrative panel"
+			}
+		}
+	},
+	"shared": {
+		"exceptions": {
+			"symmetricDecryptError": "There was a problem trying to decrypt with your symmetric key.",
+			"decryptForbidden": "Decrypt forbidden.",
+			"notFound": "not found."
+		}
+	},
+	"user": {
+		"domain": {
+			"exceptions": {
+				"userDisabled": "Your user is disable.",
+				"unverifiedUser": "This user is not verified."
+			}
+		}
+	},
+	"log": {
+		"domain": {
+			"service": {
+				"loggerService": {
+					"login": "{{rut}} logged in",
+					"logout": "{{rut}} logged out",
+					"save": "{{rut}} i create the {{entity}}",
+					"update": "{{rut}} i update the {{entity}}",
+					"remove": "{{rut}} i remove the {{entity}}"
+				}
+			}
+		}
+	}
+}
